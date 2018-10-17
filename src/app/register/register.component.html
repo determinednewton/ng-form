@@ -1,9 +1,9 @@
-<form #f="ngForm" (submit)="submit()">
+<form #f="ngForm" (submit)="submit()" appSamePasswords>
   <p>User Name:</p>
   <input name="name" type="text" [(ngModel)]="model.name" required>
 
   <p>Email:</p>
-  <input name="email" type="email" [(ngModel)]="model.email" required>
+  <input name="email" type="email" [(ngModel)]="model.email" required email>
 
   <p>Password:</p>
   <input name="password" type="password" [(ngModel)]="model.password" required>
