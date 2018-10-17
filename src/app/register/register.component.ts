@@ -14,4 +14,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit() {
+    console.log(this.model);
+  }
 }

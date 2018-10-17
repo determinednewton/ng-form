@@ -1,13 +1,17 @@
-<form>
+<form (submit)="submit()">
   <p>User Name:</p>
-  <input type="text" [(ngModel)]="model.name">
+  <input name="name" type="text" [(ngModel)]="model.name">
 
   <p>Email:</p>
-  <input type="text" [(ngModel)]="model.email">
+  <input name="email" type="text" [(ngModel)]="model.email">
 
   <p>Password:</p>
-  <input type="text" [(ngModel)]="model.password">
+  <input name="password" type="text" [(ngModel)]="model.password">
 
   <p>Repeat Password:</p>
-  <input type="text" [(ngModel)]="model.repeatPassword">
+  <input name="repeatPassword" type="text" [(ngModel)]="model.repeatPassword">
+
+  <div>
+    <button type="submit">Submit!</button>
+  </div>
 </form>
