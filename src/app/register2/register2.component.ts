@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserRegistration } from '../user-registration';
 
@@ -7,7 +7,7 @@ import { UserRegistration } from '../user-registration';
   templateUrl: './register2.component.html',
   styleUrls: ['./register2.component.css']
 })
-export class Register2Component implements OnInit {
+export class Register2Component {
   model = new UserRegistration();
 
   formGroup: FormGroup;
@@ -21,11 +21,8 @@ export class Register2Component implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   submit() {
-    console.log(this.model);
+    console.log(this.formGroup.value);
   }
 
   logForm() {
