@@ -4,7 +4,7 @@ import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator 
 @Directive({
   selector: '[appSamePasswords]',
   providers: [
-    { provide: NG_VALIDATORS, useExisting: SamePasswordsDirective, multi: true }
+    { provide: NG_VALIDATORS, useClass: SamePasswordsDirective, multi: true }
   ]
 })
 export class SamePasswordsDirective implements Validator {
