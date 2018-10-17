@@ -1,0 +1,18 @@
+<form [formGroup]="formGroup">
+  <p>User Name:</p>
+  <input formControlName="name" type="text">
+
+  <p>Email:</p>
+  <input formControlName="email" type="email">
+
+  <p>Password:</p>
+  <input formControlName="password" type="password">
+
+  <p>Repeat Password:</p>
+  <input formControlName="repeatPassword" type="password">
+
+  <div>
+    <button (click)="submit()">Submit!</button>
+    <button (click)="logForm()">Debug Form</button>
+  </div>
+</form>

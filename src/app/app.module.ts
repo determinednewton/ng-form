@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SamePasswordsDirective } from './same-passwords.directive';
+import { Register2Component } from './register2/register2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    SamePasswordsDirective
+    SamePasswordsDirective,
+    Register2Component
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
