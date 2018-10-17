@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit, AfterViewInit {
   model = new UserRegistration();
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f') ngForm: NgForm;
 
   constructor() { }
 
@@ -22,11 +22,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   logForm() {
-    console.log(this.form);
+    console.log(this.ngForm);
   }
 
   ngAfterViewInit(): void {
-    this.form.form.valueChanges.subscribe((value) => {
+    this.ngForm.form.valueChanges.subscribe((value) => {
       console.log(value);
     });
   }
