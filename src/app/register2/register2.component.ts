@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { UserRegistration } from '../user-registration';
+import { PasswordsComponent } from '../passwords/passwords.component';
 
 @Component({
   selector: 'app-register2',
   templateUrl: './register2.component.html',
   styleUrls: ['./register2.component.css']
 })
-export class Register2Component {
+export class Register2Component implements AfterViewInit {
   model = new UserRegistration();
 
   formGroup: FormGroup;
+
+  @ViewChild(PasswordsComponent) passwordsComponent;
 
   constructor() {
     this.formGroup = new FormGroup({
@@ -20,38 +23,8 @@ export class Register2Component {
       'email': new FormControl('', [
         Validators.required,
         Validators.email,
-      ]),
-      'passwordGroup': new FormGroup({
-        'password':
-          new FormControl('', [
-            Validators.required,
-          ]),
-        'repeatPassword':
-          new FormControl('', [
-            Validators.required,
-          ]),
-      }, [
-        (fg) => (this.validatePasswords(fg))
       ])
     });
-  }
-
-  validatePasswords(abstractControl: AbstractControl): ValidationErrors | null {
-    // const formGroup = this.formGroup;
-    const formGroup = abstractControl as FormGroup;
-
-    if (!formGroup || !formGroup.controls['password'] || !formGroup.controls['repeatPassword']) {
-      return;
-    }
-
-    const isInvalid = formGroup.controls['password'].value !== formGroup.controls['repeatPassword'].value; // !== ! = =
-    if (!isInvalid) {
-      return undefined;
-    }
-
-    return {
-      appSamePasswords: 'The passwords don\'t match',
-    };
   }
 
   submit() {
@@ -60,5 +33,9 @@ export class Register2Component {
 
   logForm() {
     console.log(this.formGroup);
+  }
+
+  ngAfterViewInit(): void {
+    this.formGroup.addControl('passwordsGroup', this.passwordsComponent.formGroup);
   }
 }
