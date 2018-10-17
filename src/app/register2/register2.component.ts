@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { UserRegistration } from '../user-registration';
 
 @Component({
@@ -21,19 +21,24 @@ export class Register2Component {
         Validators.required,
         Validators.email,
       ]),
-      'password': new FormControl('', [
-        Validators.required,
-        () => (this.validatePasswords())
-      ]),
-      'repeatPassword': new FormControl('', [
-        Validators.required,
-        () => (this.validatePasswords())
-      ]),
+      'passwordGroup': new FormGroup({
+        'password':
+          new FormControl('', [
+            Validators.required,
+          ]),
+        'repeatPassword':
+          new FormControl('', [
+            Validators.required,
+          ]),
+      }, [
+        (fg) => (this.validatePasswords(fg))
+      ])
     });
   }
 
-  validatePasswords(): ValidationErrors | null {
-    const formGroup = this.formGroup;
+  validatePasswords(abstractControl: AbstractControl): ValidationErrors | null {
+    // const formGroup = this.formGroup;
+    const formGroup = abstractControl as FormGroup;
 
     if (!formGroup || !formGroup.controls['password'] || !formGroup.controls['repeatPassword']) {
       return;
