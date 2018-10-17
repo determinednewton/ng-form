@@ -1,17 +1,21 @@
-<form (submit)="submit()">
+<form #f="ngForm" (submit)="submit()">
   <p>User Name:</p>
-  <input name="name" type="text" [(ngModel)]="model.name">
+  <input name="name" type="text" [(ngModel)]="model.name" required>
 
   <p>Email:</p>
-  <input name="email" type="text" [(ngModel)]="model.email">
+  <input name="email" type="email" [(ngModel)]="model.email" required>
 
   <p>Password:</p>
-  <input name="password" type="text" [(ngModel)]="model.password">
+  <input name="password" type="password" [(ngModel)]="model.password" required>
 
   <p>Repeat Password:</p>
-  <input name="repeatPassword" type="text" [(ngModel)]="model.repeatPassword">
+  <input name="repeatPassword" type="password" [(ngModel)]="model.repeatPassword" required>
 
   <div>
-    <button type="submit">Submit!</button>
+    <button type="submit" [disabled]="!f.form.valid">Submit!</button>
+    <!--<button (click)="submit()">Submit!</button>-->
+    <pre>
+      {{ f.form | json }}
+    </pre>
   </div>
 </form>
