@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserRegistration } from '../user-registration';
 
 @Component({
@@ -14,10 +14,19 @@ export class Register2Component {
 
   constructor() {
     this.formGroup = new FormGroup({
-      'name': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl(),
-      'repeatPassword': new FormControl(),
+      'name': new FormControl('', [
+        Validators.required
+      ]),
+      'email': new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      'password': new FormControl('', [
+        Validators.required
+      ]),
+      'repeatPassword': new FormControl('', [
+        Validators.required
+      ]),
     });
   }
 
