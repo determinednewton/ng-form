@@ -5,14 +5,7 @@
   <p>Email:</p>
   <input formControlName="email" type="email">
 
-  <ng-container formGroupName="passwordGroup">
-    <p>Password:</p>
-    <input formControlName="password" type="password">
-
-    <p>Repeat Password:</p>
-    <input formControlName="repeatPassword" type="password">
-
-  </ng-container>
+  <app-passwords [formGroup]="formGroup.controls['passwordGroup']"></app-passwords>
 
   <div>
     <button (click)="submit()">Submit!</button>
