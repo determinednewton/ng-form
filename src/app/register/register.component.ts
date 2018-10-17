@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserRegistration } from '../user-registration';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,8 @@ import { UserRegistration } from '../user-registration';
 export class RegisterComponent implements OnInit {
   model = new UserRegistration();
 
+  @ViewChild('f') form: NgForm;
+
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +19,9 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     console.log(this.model);
+  }
+
+  logForm() {
+    console.log(this.form);
   }
 }

@@ -13,9 +13,6 @@
 
   <div>
     <button type="submit" [disabled]="!f.form.valid">Submit!</button>
-    <!--<button (click)="submit()">Submit!</button>-->
-    <pre>
-      {{ f.form | json }}
-    </pre>
+    <button (click)="logForm()">Debug Form</button>
   </div>
 </form>
